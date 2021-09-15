@@ -2,8 +2,8 @@ pipeline {
     environment {
         registry = 'somu9491/devops1'
         registryCredential = 'dockerhub_id'
-        dockerSwarmManager = '10.40.1.26:2375'
-        dockerhost = '10.40.1.26'
+      /*  dockerSwarmManager = '10.40.1.26:2375 '    */
+         dockerhost = '10.40.1.26'
         dockerImage = ''
     }
     agent any
@@ -13,10 +13,11 @@ pipeline {
                 git 'https://github.com/Somu9491/dockertest1.git'
             }
         }
-        stage('Building our image') {
+        stage('Building Docker image') {
             steps {
-                script {
-                    dockerImage = docker.build registry + ":v$BUILD_NUMBER"
+                sh 'cd /var/lib/jenkins/workspace/pipeline2 - dockertest1'
+                sh 'cp /var/lib/jenkins/workspace/pipeline2 - dockertest1/*/var/lib/jenkins/workspace/pipeline2'
+                    sh 'docker build -t somu9491/pipelinetest:v$BUILD_NUMBER'
                 }
             }
         }
