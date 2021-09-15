@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Image To DockerHUB') {
+       /* stage('Push Image To DockerHUB') {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sh "docker rmi $registry:v$BUILD_NUMBER"
             }
-        }
+        }  */
    /*     stage('Deploying to Docker Swarm') {
             steps {
                 sh "docker -H tcp://$dockerSwarmManager service rm testing1 || true"
