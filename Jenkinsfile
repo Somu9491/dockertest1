@@ -34,7 +34,7 @@ pipeline {
                 sh "docker rmi $registry:v$BUILD_NUMBER"
             }
         }
-        stage('Deploying to Docker Swarm') {
+   /*     stage('Deploying to Docker Swarm') {
             steps {
                 sh "docker -H tcp://$dockerSwarmManager service rm testing1 || true"
                 sh "docker -H tcp://$dockerSwarmManager service create --name testing1 -p 8100:80 $registry:v$BUILD_NUMBER"
@@ -44,6 +44,6 @@ pipeline {
             steps {
                 sh 'curl http://$dockerhost:8100 || exit 1'
                 }
-        }
+        }  */
     }
 }
